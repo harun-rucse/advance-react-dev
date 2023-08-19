@@ -3,7 +3,9 @@ import { useState } from "react";
 export default function App() {
   return (
     <div className="App">
-      <FlashCards />
+      {/* <FlashCards />
+       */}
+      <DateCounter />
     </div>
   );
 }
@@ -46,7 +48,7 @@ function FlashCards() {
   const [selectedId, setSelectedId] = useState(null);
 
   const handleToggle = (id) => {
-    setSelectedId(id === selectedId ? null: id);
+    setSelectedId(id === selectedId ? null : id);
   };
 
   return (
@@ -71,6 +73,64 @@ function CardItem({ question, selectedId, onToggle }) {
       onClick={() => onToggle(question.id)}
     >
       {selectedId === question.id ? question.answer : question.question}
+    </div>
+  );
+}
+
+// Exercise for Date Counter
+function DateCounter() {
+  const [count, setCount] = useState(0);
+  const [step, setStep] = useState(1);
+
+  const date = new Date();
+  date.setDate(date.getDate() + count);
+
+  const handleIncrement = () => {
+    setCount((prevCount) => prevCount + step);
+  };
+
+  const handleDecrement = () => {
+    setCount((prevCount) => prevCount - step);
+  };
+
+  const hanldeReset = () => {
+    setCount(0);
+    setStep(1);
+  };
+
+  return (
+    <div style={{ width: "100%", textAlign: "center" }}>
+      <div>
+        <input
+          type="range"
+          min={0}
+          max={10}
+          value={step}
+          onChange={(e) => setStep(Number(e.target.value))}
+        />
+        <span>{step}</span>
+      </div>
+      <div>
+        <button onClick={handleDecrement}>-</button>
+        <input
+          type="text"
+          value={count}
+          onChange={(e) => setCount(Number(e.target.value))}
+        />
+        <button onClick={handleIncrement}>+</button>
+        <p>
+          <span>
+            {count === 0
+              ? "Today is "
+              : count > 0
+              ? `${count} days from now`
+              : `${Math.abs(count)} days ago `}
+          </span>
+          <span>{date.toDateString()}</span>
+        </p>
+        {(count !== 0 ||
+          step !== 1) && <button onClick={hanldeReset}>Reset</button>}
+      </div>
     </div>
   );
 }
