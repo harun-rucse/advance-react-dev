@@ -1,0 +1,85 @@
+body {
+  font-family: sans-serif;
+  color: #343a40;
+  line-height: 1;
+  width: 100%;
+}
+
+.app {
+  background-color: antiquewhite;
+  width: 700px;
+  margin: 100px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 40px;
+}
+
+.bill {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.bill span {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.bill input {
+  width: 40%;
+  padding: 8px 16px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 20px;
+  font-weight: 500;
+  color: #495057;
+}
+
+.service {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.service span {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.service select {
+  width: 40%;
+  padding: 8px 16px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 20px;
+  font-weight: 500;
+  color: #495057;
+}
+
+.output p {
+  font-size: 20px;
+  font-weight: 600;
+  color: #61686e;
+}
+
+.output b {
+  font-weight: 800;
+  color: rgb(229, 28, 28);
+}
+
+.btn {
+  background-color: black;
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
