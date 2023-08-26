@@ -10,74 +10,32 @@ import WatchedSummary from "./components/watched-summary";
 import WatchedList from "./components/watched-list";
 import Loader from "./components/loader";
 import MovieDetails from "./components/movie-details";
-
-const API_KEY = "f297a5f8";
+import { useMovies } from "./hooks/useMovies";
+import { useLocalStorage } from "./hooks/useLocalStorage";
 
 export default function App() {
-  const [query, setQuery] = useState("inception");
-  const [loading, setLoading] = useState(false);
-  const [movies, setMovies] = useState([]);
-  const [watched, setWatched] = useState([]);
-  const [error, setError] = useState("");
+  const [query, setQuery] = useState("");
   const [selectedId, setSelectedId] = useState(null);
 
-  const handleSelect = (id) => {
+  const [watched, setWatched] = useLocalStorage([], "watched");
+  const { loading, movies, error } = useMovies(query, handleClose);
+
+  function handleSelect(id) {
     setSelectedId((selectedId) => (selectedId === id ? null : id));
-  };
+  }
 
-  const handleClose = () => {
+  function handleClose() {
     setSelectedId(null);
-  };
+  }
 
-  const handleAddWatched = (movie) => {
+  function handleAddWatched(movie) {
     setWatched((watched) => [...watched, movie]);
-  };
+  }
 
-  const handleRemoveWatched = (id) => {
-    setWatched((watched) => watched.filter((movie) => movie.imdbID !== id));
-  };
-
-  useEffect(() => {
-    const controller = new AbortController();
-
-    async function getMovies() {
-      setLoading(true);
-      setError("");
-      try {
-        const res = await fetch(
-          `http://www.omdbapi.com/?apikey=${API_KEY}&s=${query}`,
-          {
-            signal: controller.signal,
-          }
-        );
-        if (!res.ok)
-          throw new Error("Something went wrong with featching movies");
-
-        const data = await res.json();
-        if (data.Response === "False") throw new Error("Movie not found");
-
-        setMovies(data.Search);
-      } catch (err) {
-        if (!err.name === "AbortError") {
-          setError(err.message);
-        }
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    if (query.length < 3) {
-      setMovies([]);
-      setError("");
-      return;
-    }
-
-    getMovies();
-
-    return () => {
-      controller.abort();
-    };
-  }, [query]);
+  function handleRemoveWatched(id) {
+    const filteredWatched = watched.filter((movie) => movie.imdbID !== id);
+    setWatched(filteredWatched);
+  }
 
   return (
     <>

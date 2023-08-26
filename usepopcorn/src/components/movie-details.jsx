@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import StarRating from "../libs/star-rating";
 import Loader from "./loader";
+import { useKey } from "../hooks/useKey";
 
 const API_KEY = "f297a5f8";
 
@@ -13,6 +14,8 @@ export default function MovieDetails({
   const [movie, setMovie] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [userRating, setUserRating] = useState(0);
+
+  useKey("Escape", onClose);
 
   const {
     Title: title,
