@@ -25,40 +25,28 @@
       "id": 17806751
     },
     {
-      "cityName": "Berlin",
-      "country": "Germany",
-      "emoji": "🇩🇪",
-      "date": "2027-02-12T09:24:11.863Z",
-      "notes": "Amazing 😃",
-      "position": {
-        "lat": 52.53586782505711,
-        "lng": 13.376933665713324
-      },
-      "id": 98443197
-    },
-    {
-      "cityName": "Faro",
-      "country": "Portugal",
-      "emoji": "🇵🇹",
-      "date": "2027-10-31T15:59:59.138Z",
-      "notes": "My favorite city so far!",
-      "position": {
-        "lat": 38.727881642324164,
-        "lng": -9.140900099907554
-      },
-      "id": 4775747
-    },
-    {
-      "cityName": "Barcelona",
+      "cityName": "Viacamp y Litera",
       "country": "Spain",
       "emoji": "🇪🇸",
-      "date": "2027-07-15T08:22:53.976Z",
+      "date": "2023-09-06T05:51:57.234Z",
       "notes": "",
       "position": {
-        "lat": 40.46635901755316,
-        "lng": -3.7133789062500004
+        "lat": "42.01665183556825",
+        "lng": "0.5712890625000001"
       },
-      "id": 47843874
+      "id": 73930386
+    },
+    {
+      "cityName": "La Salvetat-sur-Agout",
+      "country": "France",
+      "emoji": "🇫🇷",
+      "date": "2023-09-06T05:52:07.079Z",
+      "notes": "",
+      "position": {
+        "lat": "43.58039085560786",
+        "lng": "2.6806640625"
+      },
+      "id": 73930388
     }
   ]
 }
